@@ -104,37 +104,35 @@ export const UserManagement: React.FC = () => {
 
   const getRankLabel = (role: string) => {
     const roles: Record<string, string> = {
-      'coronel': 'Coronel',
-      'tenente-coronel': 'Tenente Coronel',
-      'major': 'Major',
-      'capitao': 'Capitão',
-      '1-tenente': '1º Tenente',
-      '2-tenente': '2º Tenente',
-      '1-sargento': '1º Sargento',
-      '2-sargento': '2º Sargento',
-      '3-sargento': '3º Sargento',
-      'cabo': 'Cabo',
-      'soldado': 'Soldado',
-      'aluno': 'Aluno Soldado'
+      'coronel': 'Insp. Superintendente',
+      'tenente-coronel': 'Insp. Coordenador',
+      'major': 'Insp. Chefe',
+      'capitao': 'Inspetor',
+      '1-tenente': 'Subinspetor',
+      '2-tenente': 'Classe Distinta',
+      '1-sargento': 'Classe Especial',
+      '2-sargento': 'GCM 1ª Classe',
+      '3-sargento': 'GCM 2ª Classe',
+      'cabo': 'GCM 3ª Classe',
+      'soldado': 'Guarda Civil',
+      'aluno': 'Aluno Guarda'
     };
     return roles[role] || role;
   };
 
   const roleOptions = [
-    { value: 'coronel', label: 'Coronel' },
-    { value: 'tenente-coronel', label: 'Tenente Coronel' },
-    { value: 'major', label: 'Major' },
-    { value: 'capitao', label: 'Capitão' },
-    { value: '1-tenente', label: '1º Tenente' },
-    { value: '2-tenente', label: '2º Tenente' },
-    { value: 'aspirante', label: 'Aspirante a Oficial' },
-    { value: 'subtenente', label: 'Subtenente' },
-    { value: '1-sargento', label: '1º Sargento' },
-    { value: '2-sargento', label: '2º Sargento' },
-    { value: '3-sargento', label: '3º Sargento' },
-    { value: 'cabo', label: 'Cabo' },
-    { value: 'soldado', label: 'Soldado' },
-    { value: 'aluno', label: 'Aluno Soldado' }
+    { value: 'coronel', label: 'Insp. Superintendente' },
+    { value: 'tenente-coronel', label: 'Insp. Coordenador' },
+    { value: 'major', label: 'Insp. Chefe' },
+    { value: 'capitao', label: 'Inspetor' },
+    { value: '1-tenente', label: 'Subinspetor' },
+    { value: '2-tenente', label: 'Classe Distinta' },
+    { value: '1-sargento', label: 'Classe Especial' },
+    { value: '2-sargento', label: 'GCM 1ª Classe' },
+    { value: '3-sargento', label: 'GCM 2ª Classe' },
+    { value: 'cabo', label: 'GCM 3ª Classe' },
+    { value: 'soldado', label: 'Guarda Civil' },
+    { value: 'aluno', label: 'Aluno Guarda' }
   ];
 
   const pendingUsers = users.filter(u => u.status === 'pending');
@@ -156,7 +154,7 @@ export const UserManagement: React.FC = () => {
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between border-b border-slate-800 pb-3">
         <div className="flex items-center gap-2">
-          <UserCog className="w-6 h-6 text-yellow-400" />
+          <UserCog className="w-6 h-6 text-sky-400" />
           <div>
             <h2 className="font-outfit font-bold text-slate-100 text-lg">Gerenciamento de Membros (Efetivo)</h2>
             <p className="text-xs text-slate-500">Gerencie aprovações de novos ingressos e a hierarquia dos militares.</p>
@@ -219,13 +217,13 @@ export const UserManagement: React.FC = () => {
         {/* Efetivo Geral Right (2 cols) */}
         <div className="lg:col-span-2 glass-panel rounded-2xl p-5 border border-slate-800/60 min-h-[400px] space-y-4">
           <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
-            <ShieldAlert className="w-5 h-5 text-yellow-400" />
+            <ShieldAlert className="w-5 h-5 text-sky-400" />
             <h3 className="font-outfit font-bold text-slate-200 text-sm">Militares Ativos (Efetivo Geral)</h3>
           </div>
 
           {fetching && activeUsers.length === 0 ? (
             <div className="py-16 flex justify-center">
-              <div className="w-6 h-6 border-2 border-yellow-500/20 border-t-yellow-500 rounded-full animate-spin" />
+              <div className="w-6 h-6 border-2 border-sky-500/20 border-t-sky-500 rounded-full animate-spin" />
             </div>
           ) : activeUsers.length === 0 ? (
             <p className="text-xs text-slate-500 text-center py-16">Nenhum militar cadastrado no efetivo.</p>
@@ -278,7 +276,7 @@ export const UserManagement: React.FC = () => {
                             checked={u.isInstructor || false}
                             disabled={updating === u.id}
                             onChange={() => handleToggleInstructor(u.id, u.isInstructor || false)}
-                            className="w-4 h-4 rounded border-slate-700 bg-slate-900 text-yellow-500 focus:ring-yellow-500/30 focus:ring-offset-slate-900 cursor-pointer disabled:opacity-50"
+                            className="w-4 h-4 rounded border-slate-700 bg-slate-900 text-sky-500 focus:ring-sky-500/30 focus:ring-offset-slate-900 cursor-pointer disabled:opacity-50"
                           />
                         </label>
                       </td>

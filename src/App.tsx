@@ -5,8 +5,6 @@ import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
 import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
-import { Prisional } from './pages/Prisional';
-import { FichasPrisionais } from './pages/FichasPrisionais';
 import { RelatoriosOcorrencias } from './pages/RelatoriosOcorrencias';
 import { Ausencias } from './pages/Ausencias';
 import { Subdivisoes } from './pages/Subdivisoes';
@@ -27,10 +25,10 @@ import { RHPontoDashboard } from './pages/RHPontoDashboard';
 import { Shield, ShieldAlert } from 'lucide-react';
 
 // Private Route Wrapper with Permission Gating
-const PrivateRoute: React.FC<{ children: React.ReactNode; permission?: string; title: string }> = ({ 
-  children, 
+const PrivateRoute: React.FC<{ children: React.ReactNode; permission?: string; title: string }> = ({
+  children,
   permission,
-  title 
+  title
 }) => {
   const { user, loading, hasPermission } = useAuth();
   const location = useLocation();
@@ -38,7 +36,7 @@ const PrivateRoute: React.FC<{ children: React.ReactNode; permission?: string; t
   if (loading) {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center text-slate-600 gap-3">
-        <Shield className="w-10 h-10 text-yellow-600 fill-yellow-600/5 animate-pulse" />
+        <Shield className="w-10 h-10 text-sky-500 fill-sky-500/5 animate-pulse" />
         <span className="text-[10px] font-bold tracking-widest font-mono text-slate-400 uppercase">RESOLVENDO INTEGRIDADE DO SISTEMA...</span>
       </div>
     );
@@ -101,43 +99,6 @@ const MainLayout: React.FC<{ children: React.ReactNode; title: string }> = ({ ch
       <div className="flex-1 flex flex-col min-h-screen overflow-y-auto lg:pl-64 bg-zinc-950 text-zinc-200">
         <Header title={title} toggleSidebar={toggleSidebar} />
         <main className="flex-1 pb-12 relative">
-          {/* Out of Service Blocker Overlay */}
-          {isOutOfService && (location.pathname === '/prisional' || location.pathname === '/fichas') ? (
-            <div className="absolute inset-0 bg-zinc-950/95 backdrop-blur-md z-50 flex items-center justify-center p-6">
-              <div className="max-w-md w-full glass-panel border border-zinc-800/80 bg-zinc-900/90 p-8 rounded-2xl text-center space-y-6 shadow-[0_0_50px_rgba(239,68,68,0.15)] animate-in fade-in zoom-in-95 duration-200">
-                <div className="w-16 h-16 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto text-red-500 animate-pulse">
-                  <ShieldAlert className="w-8 h-8" />
-                </div>
-                <div className="space-y-2">
-                  <h3 className="font-outfit font-extrabold text-xl text-zinc-100 uppercase tracking-wide">Você está Fora de Serviço</h3>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
-                    Por determinação do comando, você deve bater o ponto de entrada para poder interagir com os outros módulos do painel.
-                  </p>
-                </div>
-                
-                <div className="pt-2 flex flex-col sm:flex-row gap-3">
-                  <button
-                    onClick={handleClockIn}
-                    disabled={clockingIn}
-                    className="flex-1 py-3 px-4 rounded-xl bg-yellow-500 hover:bg-yellow-400 text-black font-bold uppercase tracking-wider text-[10px] transition-colors flex items-center justify-center gap-2"
-                  >
-                    {clockingIn ? (
-                      <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
-                    ) : (
-                      <span>Bater Ponto de Entrada</span>
-                    )}
-                  </button>
-                  <button
-                    onClick={() => navigate('/bate-ponto')}
-                    className="flex-1 py-3 px-4 rounded-xl border border-zinc-850 hover:bg-zinc-800 text-zinc-300 font-bold uppercase tracking-wider text-[10px] transition-colors flex items-center justify-center"
-                  >
-                    Ver Meu Histórico
-                  </button>
-                </div>
-              </div>
-            </div>
-          ) : null}
-
           {children}
         </main>
       </div>
@@ -155,158 +116,142 @@ export const App: React.FC = () => {
           <Route path="/clipe/:id" element={<PublicPost />} />
 
           {/* Protected Routes */}
-          <Route 
-            path="/" 
+          <Route
+            path="/"
             element={
               <PrivateRoute permission="dashboard" title="Dashboard Geral">
                 <Dashboard />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/prisional" 
-            element={
-              <PrivateRoute permission="prisional" title="Módulo Prisional (Pendente / Executado)">
-                <Prisional />
-              </PrivateRoute>
-            } 
-          />
-          <Route 
-            path="/fichas" 
-            element={
-              <PrivateRoute permission="prisional" title="Histórico Prisional - Fichas">
-                <FichasPrisionais />
-              </PrivateRoute>
-            } 
-          />
-          <Route 
-            path="/relatorios" 
+          <Route
+            path="/relatorios"
             element={
               <PrivateRoute permission="relatorios" title="Gerenciamento de PTR">
                 <RelatoriosOcorrencias />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/ausencias" 
+          <Route
+            path="/ausencias"
             element={
               <PrivateRoute permission="ausencias" title="Solicitações de Ausência">
                 <Ausencias />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/subdivisoes" 
+          <Route
+            path="/subdivisoes"
             element={
               <PrivateRoute permission="comandos" title="Gestão de Subdivisões">
                 <Subdivisoes />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/subdivisao/:id" 
+          <Route
+            path="/subdivisao/:id"
             element={
               <PrivateRoute permission="comandos" title="Gerenciar Subdivisão">
                 <SubdivisaoManager />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/corregedoria" 
+          <Route
+            path="/corregedoria"
             element={
               <PrivateRoute permission="corregedoria" title="Corregedoria Interna COOP">
                 <Corregedoria />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/cursos" 
+          <Route
+            path="/cursos"
             element={
               <PrivateRoute permission="cursos" title="Cursos & Apostilas de Estudo">
                 <Cursos />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/informativos" 
+          <Route
+            path="/informativos"
             element={
               <PrivateRoute permission="informativos" title="Informativos e Diretrizes">
                 <Informativos />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/usuarios" 
+          <Route
+            path="/usuarios"
             element={
               <PrivateRoute permission="users" title="Gestão de Militares">
                 <UserManagement />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/bate-ponto" 
+          <Route
+            path="/bate-ponto"
             element={
               <PrivateRoute permission="dashboard" title="Terminal de Bate Ponto">
                 <BatePonto />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/rh-ponto" 
+          <Route
+            path="/rh-ponto"
             element={
               <PrivateRoute permission="users" title="RH - Controle de Ponto">
                 <RHPontoDashboard />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/exoneracoes" 
+          <Route
+            path="/exoneracoes"
             element={
               <PrivateRoute permission="exoneracoes" title="Módulo de Exonerações">
                 <Exoneracoes />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/permissoes" 
+          <Route
+            path="/permissoes"
             element={
               <PrivateRoute permission="permissions" title="Configurações de Permissão">
                 <PermissionsConfig />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/metricas" 
+          <Route
+            path="/metricas"
             element={
               <PrivateRoute permission="metrics" title="Métricas e Desempenho">
                 <Metricas />
               </PrivateRoute>
-            } 
+            }
           />
 
-          <Route 
-            path="/social" 
+          <Route
+            path="/social"
             element={
               <PrivateRoute permission="social" title="Comunidade e Vdeos">
                 <RedeSocial />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/chat" 
+          <Route
+            path="/chat"
             element={
               <PrivateRoute permission="chat" title="Bate-Papo da Corporação">
                 <Chat />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/perfil" 
+          <Route
+            path="/perfil"
             element={
               <PrivateRoute permission="dashboard" title="Meu Perfil">
                 <Profile />
               </PrivateRoute>
-            } 
+            }
           />
 
           {/* Catch-all Redirect */}

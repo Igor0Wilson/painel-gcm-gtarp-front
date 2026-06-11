@@ -23,7 +23,7 @@ const Epaulette = ({ children }: { children: React.ReactNode }) => (
 const GoldStar = ({ x, y }: { x: number; y: number }) => (
   <g transform={`translate(${x}, ${y}) scale(0.18)`}>
     <circle cx="100" cy="100" r="45" fill="#1d4ed8" stroke="#ef4444" strokeWidth="10" />
-    <polygon points="100,10 120,70 190,70 135,110 155,180 100,140 45,180 65,110 10,70 80,70" fill="#fbbf24" />
+    <polygon points="100,10 120,70 190,70 135,110 155,180 100,140 45,180 65,110 10,70 80,70" fill="#38bdf8" />
   </g>
 );
 
@@ -39,7 +39,7 @@ const SimpleStar = ({ x, y, color }: { x: number; y: number, color: string }) =>
 );
 
 const Chevron = ({ y }: { y: number }) => (
-  <path d={`M 20,${y} L 40,${y - 15} L 60,${y} L 60,${y + 10} L 40,${y - 5} L 20,${y + 10} Z`} fill="#fbbf24" />
+  <path d={`M 20,${y} L 40,${y - 15} L 60,${y} L 60,${y + 10} L 40,${y - 5} L 20,${y + 10} Z`} fill="#38bdf8" />
 );
 
 export const RankIcon: React.FC<RankProps> = ({ role, className = "w-8 h-8" }) => {
@@ -54,7 +54,7 @@ export const RankIcon: React.FC<RankProps> = ({ role, className = "w-8 h-8" }) =
       case 'aluno':
         return (
           <PraçaShield>
-            <SimpleStar x={22} y={15} color="#fbbf24" />
+            <SimpleStar x={22} y={15} color="#38bdf8" />
           </PraçaShield>
         );
       case 'soldado':
@@ -102,7 +102,7 @@ export const RankIcon: React.FC<RankProps> = ({ role, className = "w-8 h-8" }) =
       case 'subtenente':
         return (
           <Epaulette>
-            <polygon points="25,35 45,65 25,65" fill="none" stroke="#fbbf24" strokeWidth="4" />
+            <polygon points="25,35 45,65 25,65" fill="none" stroke="#38bdf8" strokeWidth="4" />
           </Epaulette>
         );
       case 'aspirante':

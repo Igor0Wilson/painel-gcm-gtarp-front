@@ -22,6 +22,7 @@ import {
   Briefcase
 } from 'lucide-react';
 
+import logo from '../assets/logo.png';
 import { RankIcon } from './RankIcon';
 
 interface SidebarProps {
@@ -37,48 +38,52 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const getRankBadgeColor = (role: string) => {
     switch (role) {
       case 'coronel':
-        return 'bg-red-950 text-red-400 border-red-800/40';
+        return 'bg-rose-100 text-rose-850 border-rose-200';
       case 'tenente-coronel':
-        return 'bg-orange-950 text-orange-400 border-orange-800/40';
+        return 'bg-orange-100 text-orange-850 border-orange-200';
       case 'major':
-        return 'bg-amber-950 text-amber-400 border-amber-800/40';
+        return 'bg-amber-100 text-amber-850 border-amber-200';
       case 'capitao':
-        return 'bg-yellow-950 text-yellow-400 border-yellow-800/40';
+        return 'bg-sky-100 text-sky-850 border-sky-200';
       case '1-tenente':
-        return 'bg-yellow-950 text-yellow-450 border-yellow-800/40';
+        return 'bg-blue-100 text-blue-850 border-blue-200';
       case '2-tenente':
-        return 'bg-yellow-950 text-yellow-400 border-yellow-800/40';
+        return 'bg-blue-100 text-blue-800 border-blue-200';
       case '1-sargento':
-        return 'bg-emerald-950 text-emerald-400 border-emerald-800/40';
+        return 'bg-emerald-100 text-emerald-850 border-emerald-200';
       case '2-sargento':
-        return 'bg-emerald-950 text-emerald-500 border-emerald-800/30';
+        return 'bg-emerald-100 text-emerald-800 border-emerald-250';
       case '3-sargento':
-        return 'bg-teal-950 text-teal-400 border-teal-800/40';
+        return 'bg-teal-100 text-teal-850 border-teal-200';
       case 'cabo':
-        return 'bg-yellow-950 text-yellow-400 border-yellow-800/40';
+        return 'bg-teal-100 text-teal-800 border-teal-200';
       case '1-soldado':
-        return 'bg-zinc-900 text-zinc-300 border-zinc-700/40';
+      case 'soldado':
+        return 'bg-slate-100 text-slate-800 border-slate-200';
       case '2-soldado':
-        return 'bg-zinc-900 text-zinc-400 border-zinc-700/40';
+      case 'aluno':
+        return 'bg-slate-100 text-slate-700 border-slate-200';
       default:
-        return 'bg-zinc-900 text-zinc-400 border-zinc-700/40';
+        return 'bg-slate-100 text-slate-700 border-slate-200';
     }
   };
 
   const getRankLabel = (role: string) => {
     const roles: Record<string, string> = {
-      'coronel': 'Coronel',
-      'tenente-coronel': 'Tenente Coronel',
-      'major': 'Major',
-      'capitao': 'Capitão',
-      '1-tenente': '1º Tenente',
-      '2-tenente': '2º Tenente',
-      '1-sargento': '1º Sargento',
-      '2-sargento': '2º Sargento',
-      '3-sargento': '3º Sargento',
-      'cabo': 'Cabo',
-      '1-soldado': '1º Soldado',
-      '2-soldado': '2º Soldado'
+      'coronel': 'Insp. Superintendente',
+      'tenente-coronel': 'Insp. Coordenador',
+      'major': 'Insp. Chefe',
+      'capitao': 'Inspetor',
+      '1-tenente': 'Subinspetor',
+      '2-tenente': 'Classe Distinta',
+      '1-sargento': 'Classe Especial',
+      '2-sargento': 'GCM 1ª Classe',
+      '3-sargento': 'GCM 2ª Classe',
+      'cabo': 'GCM 3ª Classe',
+      '1-soldado': 'Guarda Civil',
+      'soldado': 'Guarda Civil',
+      '2-soldado': 'Aluno Guarda',
+      'aluno': 'Aluno Guarda'
     };
     return roles[role] || role;
   };
@@ -88,8 +93,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     { path: '/bate-ponto', label: 'Bater Ponto', icon: Clock, permission: 'dashboard' },
     { path: '/informativos', label: 'Informativos', icon: BookOpen, permission: 'informativos' },
     { path: '/relatorios', label: 'PTR', icon: FileText, permission: 'relatorios' },
-    { path: '/prisional', label: 'Módulo Prisional', icon: Shield, permission: 'prisional' },
-    { path: '/fichas', label: 'Histórico Prisional', icon: Archive, permission: 'prisional' },
     { path: '/cursos', label: 'Cursos & Apostilas', icon: BookOpen, permission: 'cursos' },
     { path: '/chat', label: 'Bate-Papo da Corporação', icon: MessageSquare, permission: 'chat' },
     { path: '/social', label: 'Comunidade & Clipes', icon: PlaySquare, permission: 'social' },
@@ -131,13 +134,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
           {/* Logo Section */}
           <div className="h-16 flex items-center justify-between px-6 border-b border-zinc-900 bg-zinc-950">
             <div className="flex items-center gap-3">
-              <img src="/logo.png" alt="COOP Logo" className="w-10 h-10 object-contain drop-shadow-[0_0_15px_rgba(234,179,8,0.3)]" />
+              <img src={logo} alt="GCM Logo" className="w-10 h-10 object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]" />
               <div>
-                <h1 className="font-outfit font-extrabold text-lg tracking-wider bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">COOP</h1>
+                <h1 className="font-outfit font-extrabold text-lg tracking-wider bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">GCM</h1>
                 <p className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold">Painel Tático</p>
               </div>
             </div>
-            <button className="lg:hidden p-1.5 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-900" onClick={toggleSidebar}>
+            <button className="lg:hidden p-1.5 text-zinc-450 hover:text-white rounded-lg hover:bg-zinc-900" onClick={toggleSidebar}>
               <X className="w-5 h-5" />
             </button>
           </div>
@@ -156,7 +159,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
                   className={({ isActive }) => `
                     flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200
                     ${isActive 
-                      ? 'bg-yellow-600 text-white border border-yellow-500/50 shadow-[0_0_15px_rgba(59,130,246,0.25)]' 
+                      ? 'bg-sky-600 text-white border border-sky-500/50 shadow-[0_0_15px_rgba(59,130,246,0.25)]' 
                       : 'text-zinc-300 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-zinc-800'
                     }
                   `}

@@ -32,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({ title, toggleSidebar }) => {
           <Menu className="w-5 h-5" />
         </button>
         <div className="flex flex-col">
-          <h1 className="font-outfit font-black text-yellow-500 text-sm tracking-widest uppercase">Comando de Operações</h1>
+          <h1 className="font-outfit font-black text-sky-500 text-sm tracking-widest uppercase">Comando de Operações</h1>
           <h2 className="font-outfit font-bold text-zinc-200 text-lg tracking-wide leading-tight">{title}</h2>
         </div>
       </div>

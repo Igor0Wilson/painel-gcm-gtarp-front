@@ -1,19 +1,17 @@
 <p align="center">
-  <img src="public/logo.png" alt="COOP Logo" width="180" />
+  <img src="public/logo.png" alt="GCM Logo" width="180" />
 </p>
 
-<h1 align="center">Painel Tático COOP</h1>
+<h1 align="center">Painel GCM Metropolitana</h1>
 
 <p align="center">
-  <strong>Sistema de gestão operacional para corporações policiais/militares de roleplay</strong>
+  <strong>Sistema de gestão operacional para Guarda Civil Municipal (Roleplay)</strong>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=white&style=flat-square" />
   <img src="https://img.shields.io/badge/TypeScript-5.4-3178C6?logo=typescript&logoColor=white&style=flat-square" />
   <img src="https://img.shields.io/badge/Vite-5.2-646CFF?logo=vite&logoColor=white&style=flat-square" />
-  <img src="https://img.shields.io/badge/Express-4.19-000000?logo=express&logoColor=white&style=flat-square" />
-  <img src="https://img.shields.io/badge/Firebase-10.12-FFCA28?logo=firebase&logoColor=black&style=flat-square" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?logo=tailwindcss&logoColor=white&style=flat-square" />
   <img src="https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel&logoColor=white&style=flat-square" />
 </p>
@@ -22,150 +20,58 @@
 
 ## 📋 Sobre o Projeto
 
-O **Painel Tático COOP** é um sistema completo de comando e controle projetado para gerenciar operações, efetivo, treinamento e comunicação interna de uma corporação policial/militar. Desenvolvido com foco em **hierarquia**, **controle de acesso granular por patente** e **experiência premium**.
+O **Painel GCM Metropolitana** é um sistema de comando e controle projetado para gerenciar operações, efetivo e comunicação interna da corporação. Desenvolvido com foco em **hierarquia**, **controle de acesso granular por patente** e **experiência limpa e moderna**.
 
 ---
 
-## ⚙️ Módulos
+## 🚀 Deploy na Vercel (Frontend)
 
-| Módulo | Descrição |
-|---|---|
-| **Dashboard** | Visão geral com métricas em tempo real do efetivo e operações |
-| **PTR (Relatórios)** | Patrulhamento Tático — criação de viaturas, escalas e registro de ocorrências |
-| **Prisional** | Registro de prisões com fichas detalhadas, fotos do preso e participantes |
-| **Corregedoria** | Processos disciplinares internos com acompanhamento de status |
-| **Ausências** | Solicitação e aprovação de afastamentos com controle por patente |
-| **Subdivisões** | Gestão de unidades especializadas (BOPE, ROTA, etc.) com comandantes e operadores |
-| **Cursos** | Criação de cursos de capacitação com apostilas e conclusão certificada |
-| **Informativos** | Publicação de diretrizes oficiais e orientações ao efetivo |
-| **Exonerações** | Controle de desligamentos da corporação |
-| **Comunidade** | Rede social interna com posts, vídeos, curtidas e comentários |
-| **Chat** | Bate-papo em tempo real estilo Discord com envio de imagens e moderação |
-| **Gestão de Militares** | Aprovação de cadastros, promoções e controle de status |
-| **Permissões** | Configuração granular de acesso por patente para todos os módulos |
-| **Métricas** | Análise de desempenho com gráficos e KPIs |
-| **Perfil** | Página pessoal com avatar, capa, tags de cursos e subdivisões |
+Este projeto foi reestruturado para hospedar o **Frontend** e o **Backend** separadamente na Vercel, melhorando a performance e manutenção. **Este guia é focado no Frontend.**
 
----
-
-## 🔐 Hierarquia Militar
-
-O sistema reconhece **15 patentes** com controle de permissão em cascata:
-
-```
-Coronel → Ten. Coronel → Major → Capitão → 1º Tenente → 2º Tenente
-→ Aspirante → Subtenente → 1º Sargento → 2º Sargento → 3º Sargento
-→ Cabo → 1º Soldado → 2º Soldado → Aluno Soldado
-```
-
-- **Coronel e Ten. Coronel** possuem acesso total e podem configurar permissões de todas as patentes
-- Cada patente possui um **ícone/brasão SVG exclusivo** renderizado em todo o sistema
-
----
-
-## 🛠️ Stack Tecnológica
-
-```
-Frontend       React 18 + TypeScript + Vite + Tailwind CSS
-Backend        Express.js (Serverless Functions na Vercel)
-Banco de Dados Firebase Firestore (NoSQL em tempo real)
-Upload         Cloudinary (avatares, capas, fotos de prisões, chat)
-Autenticação   JWT com cookies httpOnly
-Deploy         Vercel (frontend estático + API serverless)
-```
-
----
-
-## 🚀 Deploy na Vercel
-
-### 1. Clone o repositório
-```bash
-git clone https://github.com/Igor0Wilson/painel-policia-front.git
-cd painel-policia-front
-```
-
-### 2. Instale as dependências
-```bash
-npm install
-```
-
-### 3. Configure as variáveis de ambiente
-
-Copie o `.env.example` e preencha com seus valores:
-
-```bash
-cp .env.example .env
-```
-
-| Variável | Descrição |
-|---|---|
-| `FIREBASE_API_KEY` | Chave da API do Firebase |
-| `FIREBASE_AUTH_DOMAIN` | Auth domain do Firebase |
-| `FIREBASE_PROJECT_ID` | ID do projeto Firebase |
-| `FIREBASE_STORAGE_BUCKET` | Bucket de storage |
-| `FIREBASE_MESSAGING_SENDER_ID` | Sender ID |
-| `FIREBASE_APP_ID` | App ID |
-| `FIREBASE_MEASUREMENT_ID` | Measurement ID (Analytics) |
-| `JWT_SECRET` | String secreta longa para assinar tokens |
-| `CLOUDINARY_CLOUD_NAME` | Nome do cloud no Cloudinary |
-## 🚀 Como subir na Vercel (Projeto Único)
-
-Este sistema foi construído de forma otimizada para rodar Frontend e Backend (API) juntos **no mesmo projeto Vercel**. 
-
-### Passo 1: Configurar a Vercel
+### 1. Criar projeto na Vercel
 1. Vá em **Add New > Project** no painel da Vercel.
-2. Importe este repositório do GitHub.
-3. O *Framework Preset* deve ser detectado automaticamente como **Vite**.
+2. Importe o repositório do seu painel.
+3. O *Root Directory* deve continuar como `./` (raiz).
+4. O *Framework Preset* deve ser detectado automaticamente como **Vite**.
 
-### Passo 2: Variáveis de Ambiente
-Antes de clicar em Deploy, vá até a aba **Environment Variables** e cole TODAS as variáveis do arquivo `.env.example` com seus valores reais (Chaves do Firebase, Cloudinary, etc).
-- **Sem as chaves do Firebase, o sistema não vai rodar!**
+### 2. Variáveis de Ambiente
+Vá em **Environment Variables** e adicione a variável que conecta o front ao back:
+- `VITE_API_URL` = `https://<URL_DO_SEU_BACKEND_NA_VERCEL>.vercel.app`
 
-### Passo 3: Deploy
-Clique em **Deploy** e aguarde a finalização! A Vercel cuidará de compilar a interface e também a pasta `/api` com as Serverless Functions automaticamente.
+*(Você deve subir o backend primeiro, copiar a URL dele, e colocar aqui. Se for usar localmente, não precisa preencher).*
 
----
-
-## 📁 Estrutura do Projeto
-
-```
-├── api/
-│   ├── index.ts          # Entry point do Express (Serverless Function)
-│   ├── routes.ts         # Todas as rotas da API
-│   └── firebase.ts       # Abstração do Firestore + fallback local
-├── public/
-│   └── logo.png          # Logo da corporação
-├── src/
-│   ├── components/       # Sidebar, Header, RankIcon
-│   ├── context/          # AuthContext (autenticação global)
-│   ├── pages/            # Todos os módulos do sistema
-│   ├── App.tsx           # Roteamento principal
-│   ├── main.tsx          # Entry point React
-│   └── index.css         # Design system (Tailwind + custom)
-├── vercel.json           # Configuração de deploy
-├── .env.example          # Template de variáveis de ambiente
-└── package.json
-```
+### 3. Deploy
+Clique em Deploy. A Vercel vai compilar o app React e deixar a interface no ar.
 
 ---
 
-## 🎨 Design
+## 🎨 Design Atualizado
 
-- **Dark mode premium** com paleta `zinc-950` e acentos em amarelo/dourado
+- **Light mode clean** com paleta clara (`slate-50`, fundos brancos com blur) e acentos na cor oficial azul (`sky-500`)
 - **Glassmorphism** e micro-animações em toda a interface
 - **Tipografia**: Inter + Outfit (Google Fonts)
-- **Ícones**: Lucide React
-- **Brasões de patente**: SVGs customizados renderizados inline
-- **Layout responsivo**: Sidebar colapsável + header mobile
+- **Brasões e Cargos da GCM**: Atualizado da base militar padrão para a hierarquia da Guarda Civil (Inspetor Superintendente, Subinspetor, Classe Distinta, etc)
 
 ---
 
-## 📄 Licença
+## 📁 Estrutura do Projeto (Front)
 
-Projeto privado. Todos os direitos reservados.
+```
+├── public/
+│   └── logo.png          # Logo da corporação (ícone da aba)
+├── src/
+│   ├── assets/           # Imagens e logos (logo.png)
+│   ├── components/       # Componentes visuais
+│   ├── context/          # Autenticação global e permissões
+│   ├── pages/            # Telas do sistema
+│   ├── App.tsx           # Roteamento
+│   └── main.tsx          # Ponto de entrada
+├── .env                  # Variável do Frontend (VITE_API_URL)
+└── vite.config.ts        # Config do Vite (contém proxy para dev)
+```
 
 ---
 
 <p align="center">
-  <sub>Desenvolvido com ☕ para a corporação <strong>COOP</strong></sub>
+  <sub>Desenvolvido com ☕ para a <strong>Guarda Civil Municipal</strong></sub>
 </p>
