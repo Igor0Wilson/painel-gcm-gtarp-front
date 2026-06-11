@@ -37,31 +37,31 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
 
   const getRankBadgeColor = (role: string) => {
     switch (role) {
-      case 'coronel':
+      case 'inspetor-superintendente':
         return 'bg-rose-100 text-rose-850 border-rose-200';
-      case 'tenente-coronel':
+      case 'inspetor-coordenador':
         return 'bg-orange-100 text-orange-850 border-orange-200';
-      case 'major':
+      case 'inspetor-chefe':
         return 'bg-amber-100 text-amber-850 border-amber-200';
-      case 'capitao':
+      case 'inspetor':
         return 'bg-sky-100 text-sky-850 border-sky-200';
-      case '1-tenente':
+      case 'subinspetor':
         return 'bg-blue-100 text-blue-850 border-blue-200';
-      case '2-tenente':
+      case 'classe-distinta':
         return 'bg-blue-100 text-blue-800 border-blue-200';
-      case '1-sargento':
+      case 'classe-especial':
         return 'bg-emerald-100 text-emerald-850 border-emerald-200';
-      case '2-sargento':
+      case 'gcm-1-classe':
         return 'bg-emerald-100 text-emerald-800 border-emerald-250';
-      case '3-sargento':
+      case 'gcm-2-classe':
         return 'bg-teal-100 text-teal-850 border-teal-200';
-      case 'cabo':
+      case 'gcm-3-classe':
         return 'bg-teal-100 text-teal-800 border-teal-200';
       case '1-soldado':
-      case 'soldado':
+      case 'guarda-civil':
         return 'bg-slate-100 text-slate-800 border-slate-200';
       case '2-soldado':
-      case 'aluno':
+      case 'aluno-guarda':
         return 'bg-slate-100 text-slate-700 border-slate-200';
       default:
         return 'bg-slate-100 text-slate-700 border-slate-200';
@@ -70,20 +70,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
 
   const getRankLabel = (role: string) => {
     const roles: Record<string, string> = {
-      'coronel': 'Insp. Superintendente',
-      'tenente-coronel': 'Insp. Coordenador',
-      'major': 'Insp. Chefe',
-      'capitao': 'Inspetor',
-      '1-tenente': 'Subinspetor',
-      '2-tenente': 'Classe Distinta',
-      '1-sargento': 'Classe Especial',
-      '2-sargento': 'GCM 1ª Classe',
-      '3-sargento': 'GCM 2ª Classe',
-      'cabo': 'GCM 3ª Classe',
+      'inspetor-superintendente': 'Insp. Superintendente',
+      'inspetor-coordenador': 'Insp. Coordenador',
+      'inspetor-chefe': 'Insp. Chefe',
+      'inspetor': 'Inspetor',
+      'subinspetor': 'Subinspetor',
+      'classe-distinta': 'Classe Distinta',
+      'classe-especial': 'Classe Especial',
+      'gcm-1-classe': 'GCM 1ª Classe',
+      'gcm-2-classe': 'GCM 2ª Classe',
+      'gcm-3-classe': 'GCM 3ª Classe',
       '1-soldado': 'Guarda Civil',
-      'soldado': 'Guarda Civil',
+      'guarda-civil': 'Guarda Civil',
       '2-soldado': 'Aluno Guarda',
-      'aluno': 'Aluno Guarda'
+      'aluno-guarda': 'Aluno Guarda'
     };
     return roles[role] || role;
   };
@@ -109,7 +109,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const visibleMenuItems = menuItems.filter(item => {
     // Permissões de acesso sempre restrito para Coronel / Tenente-Coronel por segurança de elevação de privilégios.
     if (item.path === '/permissoes') {
-      return user?.role === 'coronel' || user?.role === 'tenente-coronel';
+      return user?.role === 'inspetor-superintendente' || user?.role === 'inspetor-coordenador';
     }
     return hasPermission(item.permission);
   });

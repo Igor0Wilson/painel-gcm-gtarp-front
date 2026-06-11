@@ -30,7 +30,7 @@ export const PermissionsConfig: React.FC = () => {
 
   const handleTogglePermission = (role: string, permKey: string) => {
     // Prevent locking out coronel from any permission (always has bypass anyway, but keep UI correct)
-    if (role === 'coronel') return;
+    if (role === 'inspetor-superintendente') return;
 
     const currentRolePerms = permissionsMap[role] || [];
     let nextRolePerms: string[] = [];
@@ -74,13 +74,13 @@ export const PermissionsConfig: React.FC = () => {
   };
 
   const roles = [
-    { value: 'coronel', label: 'Coronel' },
-    { value: 'tenente-coronel', label: 'Ten. Coronel' },
-    { value: 'major', label: 'Major' },
-    { value: 'capitao', label: 'Capitão' },
+    { value: 'inspetor-superintendente', label: 'Insp. Superintendente' },
+    { value: 'inspetor-coordenador', label: 'Insp. Coordenador' },
+    { value: 'inspetor-chefe', label: 'Insp. Chefe' },
+    { value: 'inspetor', label: 'Inspetor' },
     { value: 'tenente', label: 'Tenente' },
     { value: 'sargento', label: 'Sargento' },
-    { value: 'cabo', label: 'Cabo' },
+    { value: 'gcm-3-classe', label: 'GCM 3ª Classe' },
     { value: 'soldado-1', label: 'Soldado 1ª Cl.' },
     { value: 'soldado-2', label: 'Soldado 2ª Cl.' }
   ];
@@ -102,7 +102,7 @@ export const PermissionsConfig: React.FC = () => {
     { key: 'chat', label: 'Bate-Papo da Corporação' }
   ];
 
-  const hasAdminRights = user?.role === 'coronel' || user?.role === 'tenente-coronel';
+  const hasAdminRights = user?.role === 'inspetor-superintendente' || user?.role === 'inspetor-coordenador';
 
   if (!hasAdminRights) {
     return (
@@ -161,8 +161,8 @@ export const PermissionsConfig: React.FC = () => {
                       {feat.label}
                     </td>
                     {roles.map((role) => {
-                      const hasPerm = role.value === 'coronel' || (permissionsMap[role.value] || []).includes(feat.key);
-                      const isCoronel = role.value === 'coronel';
+                      const hasPerm = role.value === 'inspetor-superintendente' || (permissionsMap[role.value] || []).includes(feat.key);
+                      const isCoronel = role.value === 'inspetor-superintendente';
 
                       return (
                         <td key={role.value} className="py-3.5 px-2 text-center">

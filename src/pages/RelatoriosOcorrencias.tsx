@@ -154,16 +154,16 @@ export const RelatoriosOcorrencias: React.FC = () => {
 
   const getRankLabel = (role: string) => {
     const roles: Record<string, string> = {
-      'coronel': 'Coronel',
-      'tenente-coronel': 'Ten. Coronel',
-      'major': 'Major',
-      'capitao': 'Capitão',
-      '1-tenente': '1º Tenente',
-      '2-tenente': '2º Tenente',
-      '1-sargento': '1º Sargento',
-      '2-sargento': '2º Sargento',
-      '3-sargento': '3º Sargento',
-      'cabo': 'Cabo',
+      'inspetor-superintendente': 'Insp. Superintendente',
+      'inspetor-coordenador': 'Insp. Coordenador',
+      'inspetor-chefe': 'Insp. Chefe',
+      'inspetor': 'Inspetor',
+      'subinspetor': 'Subinspetor',
+      'classe-distinta': 'Classe Distinta',
+      'classe-especial': 'Classe Especial',
+      'gcm-1-classe': 'GCM 1ª Classe',
+      'gcm-2-classe': 'GCM 2ª Classe',
+      'gcm-3-classe': 'GCM 3ª Classe',
       '1-soldado': '1º Soldado',
       '2-soldado': '2º Soldado'
     };

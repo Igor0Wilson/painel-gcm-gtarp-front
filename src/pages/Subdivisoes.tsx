@@ -71,7 +71,7 @@ export const Subdivisoes: React.FC = () => {
     }
   }, []);
 
-  const isHighRank = user?.role === 'coronel' || user?.role === 'tenente-coronel';
+  const isHighRank = user?.role === 'inspetor-superintendente' || user?.role === 'inspetor-coordenador';
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();

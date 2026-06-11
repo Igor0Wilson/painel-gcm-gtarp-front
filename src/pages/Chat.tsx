@@ -35,7 +35,7 @@ export const Chat: React.FC = () => {
   const showError = (message: string) => setErrorModal({ isOpen: true, message });
   const showSuccess = (message: string) => setSuccessModal({ isOpen: true, message });
 
-  const isOfficer = user?.role === 'coronel' || user?.role === 'tenente-coronel';
+  const isOfficer = user?.role === 'inspetor-superintendente' || user?.role === 'inspetor-coordenador';
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -198,21 +198,21 @@ export const Chat: React.FC = () => {
 
   const getLocalRankLabel = (role: string) => {
     const roles: Record<string, string> = {
-      'coronel': 'Coronel',
-      'tenente-coronel': 'Ten. Coronel',
-      'major': 'Major',
-      'capitao': 'Capitão',
-      '1-tenente': '1º Tenente',
-      '2-tenente': '2º Tenente',
+      'inspetor-superintendente': 'Insp. Superintendente',
+      'inspetor-coordenador': 'Insp. Coordenador',
+      'inspetor-chefe': 'Insp. Chefe',
+      'inspetor': 'Inspetor',
+      'subinspetor': 'Subinspetor',
+      'classe-distinta': 'Classe Distinta',
       'aspirante': 'Aspirante',
       'subtenente': 'Subtenente',
-      '1-sargento': '1º Sargento',
-      '2-sargento': '2º Sargento',
-      '3-sargento': '3º Sargento',
-      'cabo': 'Cabo',
+      'classe-especial': 'Classe Especial',
+      'gcm-1-classe': 'GCM 1ª Classe',
+      'gcm-2-classe': 'GCM 2ª Classe',
+      'gcm-3-classe': 'GCM 3ª Classe',
       '1-soldado': '1º Soldado',
       '2-soldado': '2º Soldado',
-      'aluno': 'Aluno Soldado'
+      'aluno-guarda': 'Aluno Soldado'
     };
     return roles[role] || role;
   };

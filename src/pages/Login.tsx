@@ -215,18 +215,18 @@ export const Login: React.FC = () => {
                       onChange={(e) => setPatente(e.target.value)}
                       className="w-full !px-5 !py-3.5 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-sky-500/50 transition-all appearance-none font-medium shadow-sm"
                     >
-                      <option value="aluno">Aluno Guarda</option>
-                      <option value="soldado">Guarda Civil</option>
-                      <option value="cabo">GCM 3ª Classe</option>
-                      <option value="3-sargento">GCM 2ª Classe</option>
-                      <option value="2-sargento">GCM 1ª Classe</option>
-                      <option value="1-sargento">Classe Especial</option>
-                      <option value="2-tenente">Classe Distinta</option>
-                      <option value="1-tenente">Subinspetor</option>
-                      <option value="capitao">Inspetor</option>
-                      <option value="major">Insp. Chefe</option>
-                      <option value="tenente-coronel">Insp. Coordenador</option>
-                      <option value="coronel">Insp. Superintendente</option>
+                      <option value="aluno-guarda">Aluno Guarda</option>
+                      <option value="guarda-civil">Guarda Civil</option>
+                      <option value="gcm-3-classe">GCM 3ª Classe</option>
+                      <option value="gcm-2-classe">GCM 2ª Classe</option>
+                      <option value="gcm-1-classe">GCM 1ª Classe</option>
+                      <option value="classe-especial">Classe Especial</option>
+                      <option value="classe-distinta">Classe Distinta</option>
+                      <option value="subinspetor">Subinspetor</option>
+                      <option value="inspetor">Inspetor</option>
+                      <option value="inspetor-chefe">Insp. Chefe</option>
+                      <option value="inspetor-coordenador">Insp. Coordenador</option>
+                      <option value="inspetor-superintendente">Insp. Superintendente</option>
                     </select>
                   </div>
 

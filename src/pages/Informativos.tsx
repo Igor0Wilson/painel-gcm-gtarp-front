@@ -5,7 +5,7 @@ import { RankIcon } from '../components/RankIcon';
 
 export const Informativos: React.FC = () => {
   const { user } = useAuth();
-  const isAdmin = user?.role === 'coronel' || user?.role === 'tenente-coronel';
+  const isAdmin = user?.role === 'inspetor-superintendente' || user?.role === 'inspetor-coordenador';
 
   const [activeTab, setActiveTab] = useState<'viaturas' | 'hierarquia' | string>('viaturas');
   
@@ -17,17 +17,17 @@ export const Informativos: React.FC = () => {
 
   const getRankLabel = (role: string) => {
     const roles: Record<string, string> = {
-      'coronel': 'Coronel',
-      'tenente-coronel': 'Ten. Coronel',
-      'major': 'Major',
-      'capitao': 'Capitão',
-      '1-tenente': '1º Tenente',
-      '2-tenente': '2º Tenente',
-      '1-sargento': '1º Sargento',
-      '2-sargento': '2º Sargento',
-      '3-sargento': '3º Sargento',
-      'cabo': 'Cabo',
-      'soldado': 'Soldado',
+      'inspetor-superintendente': 'Insp. Superintendente',
+      'inspetor-coordenador': 'Insp. Coordenador',
+      'inspetor-chefe': 'Insp. Chefe',
+      'inspetor': 'Inspetor',
+      'subinspetor': 'Subinspetor',
+      'classe-distinta': 'Classe Distinta',
+      'classe-especial': 'Classe Especial',
+      'gcm-1-classe': 'GCM 1ª Classe',
+      'gcm-2-classe': 'GCM 2ª Classe',
+      'gcm-3-classe': 'GCM 3ª Classe',
+      'guarda-civil': 'Guarda Civil',
       '1-soldado': '1º Soldado',
       '2-soldado': '2º Soldado'
     };
@@ -45,7 +45,7 @@ export const Informativos: React.FC = () => {
 
   const [isAddingVtr, setIsAddingVtr] = useState(false);
   const [newVtrName, setNewVtrName] = useState('');
-  const [newVtrRole, setNewVtrRole] = useState('soldado');
+  const [newVtrRole, setNewVtrRole] = useState('guarda-civil');
   const [newVtrDesc, setNewVtrDesc] = useState('');
   const [newVtrImage, setNewVtrImage] = useState('');
 
@@ -127,7 +127,7 @@ export const Informativos: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newVtrName, minRole: newVtrRole, description: newVtrDesc, imageUrl: newVtrImage })
       });
-      setNewVtrName(''); setNewVtrRole('soldado'); setNewVtrDesc(''); setNewVtrImage('');
+      setNewVtrName(''); setNewVtrRole('guarda-civil'); setNewVtrDesc(''); setNewVtrImage('');
       setIsAddingVtr(false);
       fetchData();
     } catch (err) {}
@@ -159,15 +159,15 @@ export const Informativos: React.FC = () => {
 
   // Agrupar usuários por patente para a Hierarquia
   const hierarchyMap: Record<string, any[]> = {
-    'coronel': [], 'tenente-coronel': [], 'major': [], 'capitao': [],
-    '1-tenente': [], '2-tenente': [], 'aspirante': [], 'subtenente': [],
-    '1-sargento': [], '2-sargento': [], '3-sargento': [], 'cabo': [],
-    'soldado': [], 'aluno': []
+    'inspetor-superintendente': [], 'inspetor-coordenador': [], 'inspetor-chefe': [], 'inspetor': [],
+    'subinspetor': [], 'classe-distinta': [], 'aspirante': [], 'subtenente': [],
+    'classe-especial': [], 'gcm-1-classe': [], 'gcm-2-classe': [], 'gcm-3-classe': [],
+    'guarda-civil': [], 'aluno-guarda': []
   };
 
   systemUsers.forEach(u => {
     if (hierarchyMap[u.role]) hierarchyMap[u.role].push(u);
-    else if(u.role === '1-soldado' || u.role === '2-soldado') hierarchyMap['soldado'].push(u);
+    else if(u.role === '1-soldado' || u.role === '2-soldado') hierarchyMap['guarda-civil'].push(u);
   });
 
   return (
@@ -303,11 +303,11 @@ export const Informativos: React.FC = () => {
                     <div>
                       <label className="block text-[10px] font-bold text-zinc-400 uppercase mb-2">Patente Mínima para uso</label>
                       <select value={newVtrRole} onChange={e => setNewVtrRole(e.target.value)} className="w-full glass-input">
-                        <option value="soldado">Soldado</option>
-                        <option value="cabo">Cabo</option>
-                        <option value="1-sargento">Sargento</option>
-                        <option value="capitao">Oficial (Capitão+)</option>
-                        <option value="coronel">Comando (Coronel)</option>
+                        <option value="guarda-civil">Soldado</option>
+                        <option value="gcm-3-classe">Cabo</option>
+                        <option value="classe-especial">Sargento</option>
+                        <option value="inspetor">Oficial (Capitão+)</option>
+                        <option value="inspetor-superintendente">Comando (Coronel)</option>
                       </select>
                     </div>
                   </div>
@@ -379,11 +379,11 @@ export const Informativos: React.FC = () => {
                   
                   // Color codes for hierarchy
                   let badgeColor = 'bg-slate-900 border-slate-700 text-slate-300';
-                  if (role === 'coronel' || role === 'tenente-coronel') badgeColor = 'bg-rose-950 border-rose-500/50 text-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.2)]';
-                  else if (role === 'major') badgeColor = 'bg-amber-950 border-amber-500/50 text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.2)]';
-                  else if (role === 'capitao' || role === '1-tenente') badgeColor = 'bg-yellow-950 border-yellow-500/50 text-yellow-400';
+                  if (role === 'inspetor-superintendente' || role === 'inspetor-coordenador') badgeColor = 'bg-rose-950 border-rose-500/50 text-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.2)]';
+                  else if (role === 'inspetor-chefe') badgeColor = 'bg-amber-950 border-amber-500/50 text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.2)]';
+                  else if (role === 'inspetor' || role === 'subinspetor') badgeColor = 'bg-yellow-950 border-yellow-500/50 text-yellow-400';
                   else if (role.includes('sargento')) badgeColor = 'bg-emerald-950 border-emerald-500/50 text-emerald-400';
-                  else if (role === 'cabo') badgeColor = 'bg-teal-950 border-teal-500/50 text-teal-400';
+                  else if (role === 'gcm-3-classe') badgeColor = 'bg-teal-950 border-teal-500/50 text-teal-400';
 
                   return (
                     <div key={role} className="flex flex-col items-center w-full max-w-4xl animate-in fade-in zoom-in-95 duration-500">

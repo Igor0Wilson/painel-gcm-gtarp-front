@@ -83,7 +83,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const hasPermission = (permissionKey: string) => {
     if (!user) return false;
-    if (user.role === 'coronel') return true; // Coronel has bypass to all sections
+    if (user.role === 'inspetor-superintendente') return true; // Inspetor Superintendente has bypass to all sections
     const rolePermissions = permissions[user.role] || [];
     return rolePermissions.includes(permissionKey);
   };

@@ -157,7 +157,7 @@ export const SubdivisaoManager: React.FC = () => {
     );
   }
 
-  const isHighRank = user?.role === 'coronel' || user?.role === 'tenente-coronel';
+  const isHighRank = user?.role === 'inspetor-superintendente' || user?.role === 'inspetor-coordenador';
 
   return (
     <div className="p-6 max-w-5xl mx-auto space-y-6">

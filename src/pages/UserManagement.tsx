@@ -104,41 +104,41 @@ export const UserManagement: React.FC = () => {
 
   const getRankLabel = (role: string) => {
     const roles: Record<string, string> = {
-      'coronel': 'Insp. Superintendente',
-      'tenente-coronel': 'Insp. Coordenador',
-      'major': 'Insp. Chefe',
-      'capitao': 'Inspetor',
-      '1-tenente': 'Subinspetor',
-      '2-tenente': 'Classe Distinta',
-      '1-sargento': 'Classe Especial',
-      '2-sargento': 'GCM 1ª Classe',
-      '3-sargento': 'GCM 2ª Classe',
-      'cabo': 'GCM 3ª Classe',
-      'soldado': 'Guarda Civil',
-      'aluno': 'Aluno Guarda'
+      'inspetor-superintendente': 'Insp. Superintendente',
+      'inspetor-coordenador': 'Insp. Coordenador',
+      'inspetor-chefe': 'Insp. Chefe',
+      'inspetor': 'Inspetor',
+      'subinspetor': 'Subinspetor',
+      'classe-distinta': 'Classe Distinta',
+      'classe-especial': 'Classe Especial',
+      'gcm-1-classe': 'GCM 1ª Classe',
+      'gcm-2-classe': 'GCM 2ª Classe',
+      'gcm-3-classe': 'GCM 3ª Classe',
+      'guarda-civil': 'Guarda Civil',
+      'aluno-guarda': 'Aluno Guarda'
     };
     return roles[role] || role;
   };
 
   const roleOptions = [
-    { value: 'coronel', label: 'Insp. Superintendente' },
-    { value: 'tenente-coronel', label: 'Insp. Coordenador' },
-    { value: 'major', label: 'Insp. Chefe' },
-    { value: 'capitao', label: 'Inspetor' },
-    { value: '1-tenente', label: 'Subinspetor' },
-    { value: '2-tenente', label: 'Classe Distinta' },
-    { value: '1-sargento', label: 'Classe Especial' },
-    { value: '2-sargento', label: 'GCM 1ª Classe' },
-    { value: '3-sargento', label: 'GCM 2ª Classe' },
-    { value: 'cabo', label: 'GCM 3ª Classe' },
-    { value: 'soldado', label: 'Guarda Civil' },
-    { value: 'aluno', label: 'Aluno Guarda' }
+    { value: 'inspetor-superintendente', label: 'Insp. Superintendente' },
+    { value: 'inspetor-coordenador', label: 'Insp. Coordenador' },
+    { value: 'inspetor-chefe', label: 'Insp. Chefe' },
+    { value: 'inspetor', label: 'Inspetor' },
+    { value: 'subinspetor', label: 'Subinspetor' },
+    { value: 'classe-distinta', label: 'Classe Distinta' },
+    { value: 'classe-especial', label: 'Classe Especial' },
+    { value: 'gcm-1-classe', label: 'GCM 1ª Classe' },
+    { value: 'gcm-2-classe', label: 'GCM 2ª Classe' },
+    { value: 'gcm-3-classe', label: 'GCM 3ª Classe' },
+    { value: 'guarda-civil', label: 'Guarda Civil' },
+    { value: 'aluno-guarda', label: 'Aluno Guarda' }
   ];
 
   const pendingUsers = users.filter(u => u.status === 'pending');
   const activeUsers = users.filter(u => u.status === 'active');
 
-  const isOfficer = user?.role === 'coronel' || user?.role === 'tenente-coronel';
+  const isOfficer = user?.role === 'inspetor-superintendente' || user?.role === 'inspetor-coordenador';
 
   if (!isOfficer) {
     return (

@@ -51,26 +51,26 @@ export const RankIcon: React.FC<RankProps> = ({ role, className = "w-8 h-8" }) =
   const renderIcon = () => {
     switch (normalizedRole) {
       // PRAÇAS
-      case 'aluno':
+      case 'aluno-guarda':
         return (
           <PraçaShield>
             <SimpleStar x={22} y={15} color="#38bdf8" />
           </PraçaShield>
         );
-      case 'soldado':
+      case 'guarda-civil':
         return (
           <PraçaShield>
             <Chevron y={40} />
           </PraçaShield>
         );
-      case 'cabo':
+      case 'gcm-3-classe':
         return (
           <PraçaShield>
             <Chevron y={32} />
             <Chevron y={44} />
           </PraçaShield>
         );
-      case '3-sargento':
+      case 'gcm-2-classe':
         return (
           <PraçaShield>
             <Chevron y={24} />
@@ -78,7 +78,7 @@ export const RankIcon: React.FC<RankProps> = ({ role, className = "w-8 h-8" }) =
             <Chevron y={48} />
           </PraçaShield>
         );
-      case '2-sargento':
+      case 'gcm-1-classe':
         return (
           <PraçaShield>
             <Chevron y={16} />
@@ -87,7 +87,7 @@ export const RankIcon: React.FC<RankProps> = ({ role, className = "w-8 h-8" }) =
             <Chevron y={52} />
           </PraçaShield>
         );
-      case '1-sargento':
+      case 'classe-especial':
         return (
           <PraçaShield>
             <Chevron y={8} />
@@ -98,28 +98,14 @@ export const RankIcon: React.FC<RankProps> = ({ role, className = "w-8 h-8" }) =
           </PraçaShield>
         );
       
-      // PRAÇAS ESPECIAIS
-      case 'subtenente':
-        return (
-          <Epaulette>
-            <polygon points="25,35 45,65 25,65" fill="none" stroke="#38bdf8" strokeWidth="4" />
-          </Epaulette>
-        );
-      case 'aspirante':
-        return (
-          <Epaulette>
-            <SimpleStar x={17} y={35} color="#e2e8f0" />
-          </Epaulette>
-        );
-
       // OFICIAIS SUBALTERNOS
-      case '2-tenente':
+      case 'classe-distinta':
         return (
           <Epaulette>
             <SilverStar x={17} y={35} />
           </Epaulette>
         );
-      case '1-tenente':
+      case 'subinspetor':
         return (
           <Epaulette>
             <SilverStar x={17} y={20} />
@@ -128,7 +114,7 @@ export const RankIcon: React.FC<RankProps> = ({ role, className = "w-8 h-8" }) =
         );
 
       // OFICIAIS INTERMEDIÁRIOS
-      case 'capitao':
+      case 'inspetor':
         return (
           <Epaulette>
             <SilverStar x={17} y={10} />
@@ -138,7 +124,7 @@ export const RankIcon: React.FC<RankProps> = ({ role, className = "w-8 h-8" }) =
         );
 
       // OFICIAIS SUPERIORES
-      case 'major':
+      case 'inspetor-chefe':
         return (
           <Epaulette>
             <GoldStar x={17} y={10} />
@@ -146,7 +132,7 @@ export const RankIcon: React.FC<RankProps> = ({ role, className = "w-8 h-8" }) =
             <SilverStar x={17} y={60} />
           </Epaulette>
         );
-      case 'tenente-coronel':
+      case 'inspetor-coordenador':
         return (
           <Epaulette>
             <GoldStar x={17} y={10} />
@@ -154,7 +140,7 @@ export const RankIcon: React.FC<RankProps> = ({ role, className = "w-8 h-8" }) =
             <SilverStar x={17} y={60} />
           </Epaulette>
         );
-      case 'coronel':
+      case 'inspetor-superintendente':
         return (
           <Epaulette>
             <GoldStar x={17} y={10} />

@@ -67,18 +67,18 @@ export const RHPontoDashboard: React.FC = () => {
 
   const getRankLabel = (role: string) => {
     const roles: Record<string, string> = {
-      'coronel': 'Coronel',
-      'tenente-coronel': 'Tenente Coronel',
-      'major': 'Major',
-      'capitao': 'Capitão',
-      '1-tenente': '1º Tenente',
-      '2-tenente': '2º Tenente',
-      '1-sargento': '1º Sargento',
-      '2-sargento': '2º Sargento',
-      '3-sargento': '3º Sargento',
-      'cabo': 'Cabo',
-      'soldado': 'Soldado',
-      'aluno': 'Aluno Soldado'
+      'inspetor-superintendente': 'Insp. Superintendente',
+      'inspetor-coordenador': 'Insp. Coordenador',
+      'inspetor-chefe': 'Insp. Chefe',
+      'inspetor': 'Inspetor',
+      'subinspetor': 'Subinspetor',
+      'classe-distinta': 'Classe Distinta',
+      'classe-especial': 'Classe Especial',
+      'gcm-1-classe': 'GCM 1ª Classe',
+      'gcm-2-classe': 'GCM 2ª Classe',
+      'gcm-3-classe': 'GCM 3ª Classe',
+      'guarda-civil': 'Guarda Civil',
+      'aluno-guarda': 'Aluno Soldado'
     };
     return roles[role] || role;
   };
@@ -93,7 +93,7 @@ export const RHPontoDashboard: React.FC = () => {
     });
   };
 
-  const isOfficer = user?.role === 'coronel' || user?.role === 'tenente-coronel';
+  const isOfficer = user?.role === 'inspetor-superintendente' || user?.role === 'inspetor-coordenador';
 
   if (!isOfficer) {
     return (

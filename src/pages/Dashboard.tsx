@@ -64,20 +64,20 @@ export const Dashboard: React.FC = () => {
 
   const getRankLabel = (role: string) => {
     const roles: Record<string, string> = {
-      'coronel': 'Coronel',
-      'tenente-coronel': 'Tenente Coronel',
-      'major': 'Major',
-      'capitao': 'Capitão',
-      '1-tenente': '1º Tenente',
-      '2-tenente': '2º Tenente',
+      'inspetor-superintendente': 'Insp. Superintendente',
+      'inspetor-coordenador': 'Insp. Coordenador',
+      'inspetor-chefe': 'Insp. Chefe',
+      'inspetor': 'Inspetor',
+      'subinspetor': 'Subinspetor',
+      'classe-distinta': 'Classe Distinta',
       'aspirante': 'Aspirante',
       'subtenente': 'Subtenente',
-      '1-sargento': '1º Sargento',
-      '2-sargento': '2º Sargento',
-      '3-sargento': '3º Sargento',
-      'cabo': 'Cabo',
-      'soldado': 'Soldado',
-      'aluno': 'Aluno Soldado'
+      'classe-especial': 'Classe Especial',
+      'gcm-1-classe': 'GCM 1ª Classe',
+      'gcm-2-classe': 'GCM 2ª Classe',
+      'gcm-3-classe': 'GCM 3ª Classe',
+      'guarda-civil': 'Guarda Civil',
+      'aluno-guarda': 'Aluno Soldado'
     };
     return roles[role] || role;
   };
@@ -201,7 +201,7 @@ export const Dashboard: React.FC = () => {
     }
   };
 
-  const isHighCommand = user?.role === 'coronel' || user?.role === 'tenente-coronel';
+  const isHighCommand = user?.role === 'inspetor-superintendente' || user?.role === 'inspetor-coordenador';
 
   return (
     <div className="p-6 space-y-6">
@@ -371,7 +371,7 @@ export const Dashboard: React.FC = () => {
                       <span className="text-[10px] text-zinc-500 font-mono font-bold tracking-widest">
                         {new Date(ann.date).toLocaleDateString('pt-BR')}
                       </span>
-                      {ann.id && (user?.role === 'coronel' || ann.authorId === user?.id || ann.authorName === user?.name) && (
+                      {ann.id && (user?.role === 'inspetor-superintendente' || ann.authorId === user?.id || ann.authorName === user?.name) && (
                         <button
                           onClick={() => openDeleteConfirm(ann.id!)}
                           className="text-rose-500 hover:text-rose-450 p-1 rounded hover:bg-rose-500/10 transition-colors flex items-center justify-center ml-1 border border-zinc-800"
